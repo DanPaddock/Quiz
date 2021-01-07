@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Form, Field } from "@leveluptuts/fresh";
 
 let questionsTemp = [
 	{ questionText: "Maria got 52.647 million views on her last tik tok dance.  If Maria’s first tik tok had 1.312 million views, then how many more views is Maria getting now?", answer: "51.362" },
@@ -28,21 +27,8 @@ export default function App() {
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
 
-	const handleAnswerOptionClick = (isCorrect) => {
-		if (isCorrect) {
-			setScore(score + 1);
-		}
-
-		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-		} else {
-			setShowScore(true);
-		}
-	};
-
 	const handleSubmit = (correctAnswer) => {
-		if(correctAnswer == userAnswer){
+		if(correctAnswer === userAnswer){
 			setScore(score + 1);
 			const nextQuestion = currentQuestion + 1;
 			if (nextQuestion < questions.length) {
@@ -67,6 +53,7 @@ export default function App() {
 	const refreshPage = () => {
 		window.location.reload();
 	};
+
 	return (
 		<div className='app'>
 			{showScore ? (
